@@ -4,14 +4,22 @@ const expressValidator = require('express-validator');
 const PORT = 3000;
 const hbs = require('express-hbs');
 const path = require('path');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session')
 
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(expressValidator());
+app.use(cookieParser());
+app.use(session({secret: 'krunal', saveUninitialized: false, resave: false}));
 
 app.engine('hbs', hbs.express4 ({
     partialsDir: __dirname + '/views/partials'
 }));
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views')
+
 
 
 app.listen(PORT,function(req, res) {
