@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.16.4",
+    "express-hbs": "^2.0.2",
     "express-validator": "^5.3.1"
   },
   "devDependencies": {},
